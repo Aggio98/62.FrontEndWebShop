@@ -1,7 +1,9 @@
+import "./style.css"
+
 const HomePage = () => {
     return (
-      <div>
-        <h1>Home</h1>
+      <div className="home">
+        <h1>Welcome to TheShop</h1>
       </div>
     );
   };

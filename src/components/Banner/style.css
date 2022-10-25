@@ -1,0 +1,13 @@
+.bigContainer {
+    height: 20rem;
+    background-color: #8568ff;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+  }
+  
+  .textContainer {
+    align-self: center;
+    color: white;
+    margin-right: 10rem;
+  }
