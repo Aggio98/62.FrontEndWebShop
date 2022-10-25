@@ -1,6 +1,15 @@
 import React from "react";
 
-function Productcard({ title, price, description, rating, img }) {
+function Productcard({
+  id,
+  title,
+  price,
+  description,
+  rating,
+  img,
+  favourite,
+  addToFaviourte,
+}) {
   return (
     <div>
       <h3>{title}</h3>
@@ -8,6 +17,13 @@ function Productcard({ title, price, description, rating, img }) {
       <p>{price}</p>
       <div>{rating}</div>
       <p>{description}</p>
+      <button
+        onClick={() => {
+          addToFaviourte(id);
+        }}
+      >
+        {favourite ? "my favourite" : "add to favourite"}
+      </button>
     </div>
   );
 }
