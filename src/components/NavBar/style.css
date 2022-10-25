@@ -11,11 +11,12 @@
     margin-top:auto;
     margin-bottom: auto;
     margin-right:auto;
+    min-width: 100px;
     margin-left:auto;
     width: 50%;
-    height: 30px;
     display:flex;
-    justify-content: space-around
+    justify-content: space-between;
+    align-items: center
 
 }
 
@@ -82,5 +83,7 @@ input[type="search"]:focus {
     display: flex;
     color: white;
     align-items: center;
-    margin-right: auto
+    min-width: 100px;
+    justify-content: space-between;
+    margin-right:100px
   }

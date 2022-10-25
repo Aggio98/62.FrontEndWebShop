@@ -10,7 +10,7 @@ const NavBar = ()=>{
 					<span>The</span>
 					<span style={{ color: "white" }}>Shop</span>
 				</h2>
-                    <NavLink to="/" className='links' >Home</NavLink>
+                    <NavLink to="/home" className='links' >Home</NavLink>
                     <NavLink to="/shop" className='links' >Shop</NavLink>
                     <NavLink to="/details/:id" className='links' >Details</NavLink>
                     <form>
