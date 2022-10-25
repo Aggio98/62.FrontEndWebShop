@@ -1,0 +1,24 @@
+.footercontainer {
+    display: flex;
+    flex-direction: row;
+    background-color: midnightblue;
+    height: 280px;
+    justify-content: space-evenly;
+    align-items: baseline;
+  }
+  
+  .textContainer {
+    align-self: center;
+    color: white;
+    margin-right: 10rem;
+  }
+  
+  .footerText {
+    font-size: 10px;
+    color: grey;
+  }
+  
+  .spacing {
+    display: flex;
+    justify-content: space-between;
+  }
