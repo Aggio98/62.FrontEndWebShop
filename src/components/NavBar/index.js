@@ -23,7 +23,9 @@ const NavBar = () => {
         </form>
       </div>
       <div className="rightnav">
-        <BsPerson />
+        <NavLink to="/signup">
+          <BsPerson />
+        </NavLink>
         <BsCart />
         <BsHeart />
       </div>
