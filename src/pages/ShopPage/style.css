@@ -1,7 +1,11 @@
 .page {
+
+}
+.product-list {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-flow: row wrap;
-  flex-grow: 1;
+  flex-wrap: wrap;
+}
+.product-card {
+  width: 500px;
+  
 }

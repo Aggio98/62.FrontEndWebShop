@@ -97,12 +97,12 @@ const ShopPage = ({ addToFaviourte, products }) => {
 
   return (
     <div className="page">
-      <select onChange={changeCatFilter} value={categoryId}>
+      {/* <select onChange={changeCatFilter} value={categoryId}>
         {category.map((category) => {
           return <option value={category.id}>{category.title}</option>;
         })}
         <option value="">ALL category</option>
-      </select>
+      </select> */}
 
       {category.map((category) => {
         return (
@@ -119,12 +119,12 @@ const ShopPage = ({ addToFaviourte, products }) => {
         );
       })}
 
-      <div>
+      <div className="product-list">
         {!products
           ? "loading..."
           : filteredProduct.map((product) => {
               return (
-                <div>
+                <div className="product-card">
                   <Productcard
                     id={product.id}
                     key={product.id}
@@ -135,17 +135,16 @@ const ShopPage = ({ addToFaviourte, products }) => {
                     favourite={product.favourite}
                     addToFaviourte={addToFaviourte}
                   />
-                  <Link>
+                  {/* <Link>
                     <Link to={`/products/${product.id}`}>
                       <p>{product.title}</p>
                     </Link>
-                  </Link>
+                  </Link> */}
                 </div>
               );
             })}
         ;
       </div>
-      <FaviouratePage favProducts={products} />
     </div>
   );
 };

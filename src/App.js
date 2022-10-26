@@ -72,7 +72,10 @@ function App() {
         <Route path="/details/:id" element={<DetailsPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/login" element={<LoginPage sendToken={sendToken} />} />
-        <Route path="/favorites" element={<FaviouratePage />} />
+        <Route
+          path="/favorites"
+          element={<FaviouratePage favProducts={products} />}
+        />
       </Routes>
 
       <Footer />
