@@ -6,19 +6,19 @@ import { FaviouratePage } from "../FavoritePage";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-const ShopPage = () => {
+const ShopPage = ({ addToFaviourte, products }) => {
   //get product data to display in product list
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
 
-  const getProducts = async () => {
-    const response = await axios.get("http://localhost:4000/products");
-    console.log(response.data);
-    setProducts(response.data);
-  };
+  // const getProducts = async () => {
+  //   const response = await axios.get("http://localhost:4000/products");
+  //   console.log(response.data);
+  //   setProducts(response.data);
+  // };
 
-  useEffect(() => {
-    getProducts();
-  }, []);
+  // useEffect(() => {
+  //   getProducts();
+  // }, []);
 
   //get caetgory data to manage the filters
 
@@ -80,20 +80,20 @@ const ShopPage = () => {
   });
 
   // add to faviourte lift up function
-  const addToFaviourte = (id) => {
-    const faviourteProducts = products.map((product) => {
-      if (product.id === id) {
-        if (product.favourite === true) {
-          return { ...product, favourite: false };
-        } else {
-          return { ...product, favourite: true };
-        }
-      } else {
-        return product;
-      }
-    });
-    setProducts(faviourteProducts);
-  };
+  // const addToFaviourte = (id) => {
+  //   const faviourteProducts = products.map((product) => {
+  //     if (product.id === id) {
+  //       if (product.favourite === true) {
+  //         return { ...product, favourite: false };
+  //       } else {
+  //         return { ...product, favourite: true };
+  //       }
+  //     } else {
+  //       return product;
+  //     }
+  //   });
+  //   setProducts(faviourteProducts);
+  // };
 
   return (
     <div className="page">

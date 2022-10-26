@@ -25,6 +25,7 @@ function Productcard({
       <button
         onClick={() => {
           addToFaviourte(id);
+          // console.log(typeof addToFaviourte);
         }}
       >
         {favourite ? "my favourite" : "add to favourite"}
