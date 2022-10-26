@@ -1,18 +1,31 @@
 import "./style.css";
 
-const DetailCard = (props) => {
+const DetailCard = ({
+  title,
+  img,
+  rating,
+  category,
+  price,
+  description,
+  id,
+  favourite,
+  addToFaviourte,
+}) => {
   return (
     <div className="details">
-      <h3>{props.title}</h3>
-      <img src={props.img} alt={props.title} style={{ width: 200 }} />
-      <p>{props.rating}</p>
-      <h4>Category: {props.category}</h4>
-      <p>€{props.price}</p>
-      <p>{props.description}</p>
+      <h3>{title}</h3>
+      <img src={img} alt={title} style={{ width: 200 }} />
+      <p>{rating}</p>
+      <h4>Category: {category}</h4>
+      <p>€{price}</p>
+      <p>{description}</p>
       <button onClick={() => console.log("Add to cart!")}>
         Add to Cart
       </button>{" "}
-      <button onClick={() => console.log("Add to favorite!")}>Favorite</button>
+      <button onClick={() => addToFaviourte(id)}>
+        Favorite
+        {favourite ? "my faviourate" : "add to faviroute"}
+      </button>
     </div>
   );
 };
