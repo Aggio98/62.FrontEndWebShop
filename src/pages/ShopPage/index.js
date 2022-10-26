@@ -1,85 +1,151 @@
-// import axios from "axios";
-// import { useState, useEffect } from "react";
-// import { ProductCard } from "../../components";
-// import "./style.css";
+import React from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { Productcard } from "../../components";
+import { Link } from "react-router-dom";
 
-// const ShopPage = () => {
-//   const [products, setProducts] = useState(null);
-//   const [category, setCategory] = useState([]);
-//   const [selectCategory, setselectCategory] = useState(null);
+const ShopPage = () => {
+  //get product data to display in product list
+  const [products, setProducts] = useState([]);
 
-//   const getProducts = async () => {
-//     const response = await axios.get("http://localhost:4000/products");
-//     setProducts(response.data);
-//     console.log(response.data);
-//   };
-//   useEffect(() => {
-//     getProducts();
-//   }, []);
+  const getProducts = async () => {
+    const response = await axios.get("http://localhost:4000/products");
+    console.log(response.data);
+    setProducts(response.data);
+  };
 
-//   const getCategories = async () => {
-//     const res = await axios.get("http://localhost:4000/categories");
-//     setCategory(res.data);
-//     console.log(res.data);
-//   };
+  useEffect(() => {
+    getProducts();
+  }, []);
 
-//   useEffect(() => {
-//     getCategories();
-//   }, []);
+  //get caetgory data to manage the filters
 
-//   const getFilteredCategory = () => {
-//     if (!selectCategory) {
-//       return category;
-//     }
-//     return category.filter((item) => item.categoryId === selectCategory);
-//   };
+  const [category, setCategory] = useState([]);
 
-//   return (
-//     <div>
-//       <div>
-//         <p>Checked: {selectCategory}</p>
-//         {category.map((cat) => (
-//           <label>
-//             <input
-//               type="checkbox"
-//               value={selectCategory === cat.id}
-//               onChange={() =>
-//                 selectCategory === cat.id
-//                   ? setselectCategory(null)
-//                   : setselectCategory(cat.id)
-//               }
-//             />
-//             {cat.title}
-//           </label>
-//         ))}
-//       </div>
-//       {!products ? (
-//         "Loading..."
-//       ) : (
-//         <div className="page">
-//           {products
-//             .filter((product) => {
-//               if (selectCategory === null) {
-//                 return true;
-//               }
-//               return product.categoryId === selectCategory;
-//             })
-//             .map((product) => {
-//               return (
-//                 <ProductCard
-//                   key={product.id}
-//                   id={product.id}
-//                   title={product.title}
-//                   price={product.price}
-//                   img={product.mainImage}
-//                   description={product.description}
-//                 />
-//               );
-//             })}
-//           ;
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-// export { ShopPage };
+  const getCategory = async () => {
+    const response = await axios.get("http://localhost:4000/categories");
+    console.log("this is category response", response.data);
+    setCategory(response.data);
+  };
+
+  useEffect(() => {
+    getCategory();
+  }, []);
+
+  //define filter options
+  // const[filterByCat, setfilterByCat]=useState("")
+
+  const [categoryId, setCategoryId] = useState("");
+
+  // const filteredProductByCat = products.filter((product) => {
+  //   if (categoryId === "") {
+  //     return true;
+  //   } else if (parseInt(product.categoryId) === parseInt(categoryId)) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // });
+
+  const changeCatFilter = (event) => {
+    setCategoryId(event.target.value);
+  };
+
+  //return checked and value to setfilterarray
+  const [filterCategory, setFilterCategory] = useState([]);
+
+  const generateFilterCategory = (event) => {
+    if (event.target.checked === true) {
+      setFilterCategory([...filterCategory, event.target.value]);
+    } else if (event.target.checked === false) {
+      const newList = filterCategory.filter((category) => {
+        if (category !== event.target.value) {
+          return true;
+        }
+      });
+      setFilterCategory(newList);
+    }
+  };
+
+  const filteredProduct = products.filter((product) => {
+    if (filterCategory.length === 0) {
+      return true;
+    } else if (filterCategory.includes(product.categoryId.toString())) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+
+  // add to faviourte lift up function
+  const addToFaviourte = (id) => {
+    console.log("did I got called?", id);
+    const faviourteProducts = products.map((product) => {
+      if (product.id === id) {
+        if (product.favourite === true) {
+          return { ...product, favourite: false };
+        } else {
+          return { ...product, favourite: true };
+        }
+      } else {
+        return product;
+      }
+    });
+    setProducts(faviourteProducts);
+  };
+
+  return (
+    <div>
+      {/* <select onChange={changeCatFilter} value={categoryId}>
+        {category.map((category) => {
+          return <option value={category.id}>{category.title}</option>;
+        })}
+        <option value="">ALL category</option>
+      </select> */}
+
+      {category.map((category) => {
+        return (
+          <div>
+            <input
+              type="checkbox"
+              id={category.id}
+              value={category.id}
+              onChange={generateFilterCategory}
+              checked={filterCategory.includes(category.id.toString())}
+            ></input>
+            <lable for={category.id}>{category.title}</lable>
+          </div>
+        );
+      })}
+
+      <div>
+        {!products
+          ? "loading..."
+          : filteredProduct.map((product) => {
+              return (
+                <div>
+                  <Productcard
+                    id={product.id}
+                    key={product.id}
+                    title={product.title}
+                    price={product.price}
+                    img={product.mainImage}
+                    description={product.description}
+                    favourite={product.favourite}
+                    addToFaviourte={addToFaviourte}
+                  />
+                  <Link>
+                    <Link to={`/products/${product.id}`}>
+                      <p>{product.title}</p>
+                    </Link>
+                  </Link>
+                </div>
+              );
+            })}
+        ;
+      </div>
+    </div>
+  );
+};
+
+export { ShopPage };
