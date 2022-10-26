@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Productcard } from "../../components";
 import { Link } from "react-router-dom";
+import "./style.css";
 
 const ShopPage = () => {
   //get product data to display in product list
@@ -37,15 +38,15 @@ const ShopPage = () => {
 
   const [categoryId, setCategoryId] = useState("");
 
-  // const filteredProductByCat = products.filter((product) => {
-  //   if (categoryId === "") {
-  //     return true;
-  //   } else if (parseInt(product.categoryId) === parseInt(categoryId)) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // });
+  const filteredProductByCat = products.filter((product) => {
+    if (categoryId === "") {
+      return true;
+    } else if (parseInt(product.categoryId) === parseInt(categoryId)) {
+      return true;
+    } else {
+      return false;
+    }
+  });
 
   const changeCatFilter = (event) => {
     setCategoryId(event.target.value);
@@ -79,7 +80,6 @@ const ShopPage = () => {
 
   // add to faviourte lift up function
   const addToFaviourte = (id) => {
-    console.log("did I got called?", id);
     const faviourteProducts = products.map((product) => {
       if (product.id === id) {
         if (product.favourite === true) {
@@ -95,13 +95,13 @@ const ShopPage = () => {
   };
 
   return (
-    <div>
-      {/* <select onChange={changeCatFilter} value={categoryId}>
+    <div className="page">
+      <select onChange={changeCatFilter} value={categoryId}>
         {category.map((category) => {
           return <option value={category.id}>{category.title}</option>;
         })}
         <option value="">ALL category</option>
-      </select> */}
+      </select>
 
       {category.map((category) => {
         return (
