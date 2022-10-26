@@ -7,6 +7,7 @@ import {
   DetailsPage,
   SignupPage,
   LoginPage,
+  FaviouratePage,
 } from "./pages";
 
 function App() {
@@ -29,7 +30,9 @@ function App() {
         <Route path="/details/:id" element={<DetailsPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/login" element={<LoginPage sendToken={sendToken} />} />
+        <Route path="/favorites" element={<FaviouratePage />} />
       </Routes>
+
       <Footer />
     </div>
   );

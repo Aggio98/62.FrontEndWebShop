@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Productcard } from "../../components";
+import { FaviouratePage } from "../FavoritePage";
 import { Link } from "react-router-dom";
 import "./style.css";
 
@@ -144,6 +145,7 @@ const ShopPage = () => {
             })}
         ;
       </div>
+      <FaviouratePage favProducts={products} />
     </div>
   );
 };
