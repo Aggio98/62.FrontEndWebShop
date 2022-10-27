@@ -3,3 +3,5 @@ export { Banner } from "./Banner";
 export { Footer } from "./Footer";
 export { Productcard } from "./Productcard";
 export { DetailCard } from "./DetailCard";
+export { SignupForm } from "./Formfields";
+export { LoginForm } from "./Login";

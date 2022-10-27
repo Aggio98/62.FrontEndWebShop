@@ -23,9 +23,13 @@ const NavBar = () => {
         </form>
       </div>
       <div className="rightnav">
-        <BsPerson />
+        <NavLink to="/login">
+          <BsPerson />
+        </NavLink>
         <BsCart />
-        <BsHeart />
+        <NavLink to="/favorites">
+          <BsHeart />
+        </NavLink>
       </div>
     </div>
   );

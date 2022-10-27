@@ -18,6 +18,22 @@ const DetailsPage = () => {
     getDetails();
   }, []);
 
+  const addToFaviourte = (id) => {
+    console.log("did this get called");
+    const favouriteProducts = () => {
+      if (items.id === id) {
+        if (items.favourite === true) {
+          return { ...items, favourite: false };
+        } else {
+          return { ...items, favourite: true };
+        }
+      } else {
+        return items;
+      }
+    };
+
+    set_item(favouriteProducts);
+  };
   return (
     <div className="page">
       {!items ? (
@@ -25,12 +41,15 @@ const DetailsPage = () => {
       ) : (
         <div key={items.id}>
           <DetailCard
+            id={items.id}
             title={items.title}
             img={items.mainImage}
             rating={items.rating}
             price={items.price}
             description={items.description}
             category={items.category.title}
+            favourite={items.favourite}
+            addToFaviourte={addToFaviourte}
           />
         </div>
       )}

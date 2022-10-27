@@ -2,21 +2,23 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Productcard } from "../../components";
+import { FaviouratePage } from "../FavoritePage";
 import { Link } from "react-router-dom";
+import "./style.css";
 
-const ShopPage = () => {
+const ShopPage = ({ addToFaviourte, products }) => {
   //get product data to display in product list
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
 
-  const getProducts = async () => {
-    const response = await axios.get("http://localhost:4000/products");
-    console.log(response.data);
-    setProducts(response.data);
-  };
+  // const getProducts = async () => {
+  //   const response = await axios.get("http://localhost:4000/products");
+  //   console.log(response.data);
+  //   setProducts(response.data);
+  // };
 
-  useEffect(() => {
-    getProducts();
-  }, []);
+  // useEffect(() => {
+  //   getProducts();
+  // }, []);
 
   //get caetgory data to manage the filters
 
@@ -37,15 +39,15 @@ const ShopPage = () => {
 
   const [categoryId, setCategoryId] = useState("");
 
-  // const filteredProductByCat = products.filter((product) => {
-  //   if (categoryId === "") {
-  //     return true;
-  //   } else if (parseInt(product.categoryId) === parseInt(categoryId)) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // });
+  const filteredProductByCat = products.filter((product) => {
+    if (categoryId === "") {
+      return true;
+    } else if (parseInt(product.categoryId) === parseInt(categoryId)) {
+      return true;
+    } else {
+      return false;
+    }
+  });
 
   const changeCatFilter = (event) => {
     setCategoryId(event.target.value);
@@ -78,24 +80,23 @@ const ShopPage = () => {
   });
 
   // add to faviourte lift up function
-  const addToFaviourte = (id) => {
-    console.log("did I got called?", id);
-    const faviourteProducts = products.map((product) => {
-      if (product.id === id) {
-        if (product.favourite === true) {
-          return { ...product, favourite: false };
-        } else {
-          return { ...product, favourite: true };
-        }
-      } else {
-        return product;
-      }
-    });
-    setProducts(faviourteProducts);
-  };
+  // const addToFaviourte = (id) => {
+  //   const faviourteProducts = products.map((product) => {
+  //     if (product.id === id) {
+  //       if (product.favourite === true) {
+  //         return { ...product, favourite: false };
+  //       } else {
+  //         return { ...product, favourite: true };
+  //       }
+  //     } else {
+  //       return product;
+  //     }
+  //   });
+  //   setProducts(faviourteProducts);
+  // };
 
   return (
-    <div>
+    <div className="page">
       {/* <select onChange={changeCatFilter} value={categoryId}>
         {category.map((category) => {
           return <option value={category.id}>{category.title}</option>;
@@ -118,12 +119,12 @@ const ShopPage = () => {
         );
       })}
 
-      <div>
+      <div className="product-list">
         {!products
           ? "loading..."
           : filteredProduct.map((product) => {
               return (
-                <div>
+                <div className="product-card">
                   <Productcard
                     id={product.id}
                     key={product.id}
@@ -134,11 +135,11 @@ const ShopPage = () => {
                     favourite={product.favourite}
                     addToFaviourte={addToFaviourte}
                   />
-                  <Link>
+                  {/* <Link>
                     <Link to={`/products/${product.id}`}>
                       <p>{product.title}</p>
                     </Link>
-                  </Link>
+                  </Link> */}
                 </div>
               );
             })}

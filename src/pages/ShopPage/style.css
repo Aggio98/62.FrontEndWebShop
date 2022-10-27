@@ -1,5 +1,11 @@
 .page {
+
+}
+.product-list {
   display: flex;
-  justify-content: space-around;
-  flex-flow: row wrap;
+  flex-wrap: wrap;
+}
+.product-card {
+  width: 500px;
+  
 }

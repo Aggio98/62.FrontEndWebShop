@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import "./style.css";
 function Productcard({
   id,
   title,
@@ -11,7 +12,7 @@ function Productcard({
   addToFaviourte,
 }) {
   return (
-    <div>
+    <div className="card">
       <h3>{title}</h3>
       <h3>
         <NavLink to={`/details/${id}`}>{title}</NavLink>
@@ -24,6 +25,7 @@ function Productcard({
       <button
         onClick={() => {
           addToFaviourte(id);
+          // console.log(typeof addToFaviourte);
         }}
       >
         {favourite ? "my favourite" : "add to favourite"}
