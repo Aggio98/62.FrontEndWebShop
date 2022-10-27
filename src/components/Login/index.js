@@ -1,6 +1,7 @@
 import "./style.css";
 import { useState } from "react";
 import axios from "axios";
+import { NavLink } from "react-router-dom";
 
 function LoginForm({ sendToken }) {
   const [email, setEmail] = useState("");
@@ -75,7 +76,10 @@ function LoginForm({ sendToken }) {
 
         <input type="submit" value="Submit" />
       </form>
-      <div></div>
+      <p>
+        If you are a new shopper click <NavLink to="/signup">here</NavLink> to
+        create a profile
+      </p>
     </div>
   );
 }
