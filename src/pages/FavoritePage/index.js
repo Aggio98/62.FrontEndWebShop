@@ -1,9 +1,9 @@
 import { Productcard } from "../../components";
 import "./style.css";
 
-const FaviouratePage = ({ favProducts }) => {
-  const realFavProducts = favProducts.filter((product) => {
-    if (product.favourite === true) {
+const FaviouratePage = ({ favProducts, products }) => {
+  const realFavProducts = products.filter((product) => {
+    if (favProducts.includes(product.id)) {
       return true;
     } else {
       return false;
@@ -23,6 +23,7 @@ const FaviouratePage = ({ favProducts }) => {
                 title={product.title}
                 price={product.price}
                 img={product.mainImage}
+                favProducts={favProducts}
                 description={product.description}
               />
             );

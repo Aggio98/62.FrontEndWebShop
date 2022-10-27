@@ -18,22 +18,22 @@ const DetailsPage = () => {
     getDetails();
   }, []);
 
-  const addToFaviourte = (id) => {
-    console.log("did this get called");
-    const favouriteProducts = () => {
-      if (items.id === id) {
-        if (items.favourite === true) {
-          return { ...items, favourite: false };
-        } else {
-          return { ...items, favourite: true };
-        }
-      } else {
-        return items;
-      }
-    };
+  // const addToFaviourte = (id) => {
+  //   console.log("did this get called");
+  //   const favouriteProducts = () => {
+  //     if (items.id === id) {
+  //       if (items.favourite === true) {
+  //         return { ...items, favourite: false };
+  //       } else {
+  //         return { ...items, favourite: true };
+  //       }
+  //     } else {
+  //       return items;
+  //     }
+  //   };
 
-    set_item(favouriteProducts);
-  };
+  //   set_item(favouriteProducts);
+  // };
   return (
     <div className="page">
       {!items ? (
@@ -48,8 +48,6 @@ const DetailsPage = () => {
             price={items.price}
             description={items.description}
             category={items.category.title}
-            favourite={items.favourite}
-            addToFaviourte={addToFaviourte}
           />
         </div>
       )}

@@ -5,3 +5,5 @@ export { Productcard } from "./Productcard";
 export { DetailCard } from "./DetailCard";
 export { SignupForm } from "./Formfields";
 export { LoginForm } from "./Login";
+export { ReviewForm } from "./ReviewForm";
+export { Rating } from "./Rating";

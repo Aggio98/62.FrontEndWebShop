@@ -6,7 +6,7 @@ import { FaviouratePage } from "../FavoritePage";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-const ShopPage = ({ addToFaviourte, products }) => {
+const ShopPage = ({ addToFaviourte, products, favProducts }) => {
   //get product data to display in product list
   // const [products, setProducts] = useState([]);
 
@@ -96,29 +96,30 @@ const ShopPage = ({ addToFaviourte, products }) => {
   // };
 
   return (
-    <div className="page">
+    <div className="shop-page">
       {/* <select onChange={changeCatFilter} value={categoryId}>
         {category.map((category) => {
           return <option value={category.id}>{category.title}</option>;
         })}
         <option value="">ALL category</option>
       </select> */}
-
-      {category.map((category) => {
-        return (
-          <div>
-            <input
-              type="checkbox"
-              id={category.id}
-              value={category.id}
-              onChange={generateFilterCategory}
-              checked={filterCategory.includes(category.id.toString())}
-            ></input>
-            <lable for={category.id}>{category.title}</lable>
-          </div>
-        );
-      })}
-
+      <div className="shop-page-filter">
+        <h3>Category</h3>
+        {category.map((category) => {
+          return (
+            <div>
+              <input
+                type="checkbox"
+                id={category.id}
+                value={category.id}
+                onChange={generateFilterCategory}
+                checked={filterCategory.includes(category.id.toString())}
+              ></input>
+              <lable for={category.id}>{category.title}</lable>
+            </div>
+          );
+        })}
+      </div>
       <div className="product-list">
         {!products
           ? "loading..."
@@ -130,9 +131,10 @@ const ShopPage = ({ addToFaviourte, products }) => {
                     key={product.id}
                     title={product.title}
                     price={product.price}
+                    rating={product.rating}
                     img={product.mainImage}
                     description={product.description}
-                    favourite={product.favourite}
+                    favProducts={favProducts}
                     addToFaviourte={addToFaviourte}
                   />
                   {/* <Link>
