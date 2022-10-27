@@ -9,6 +9,7 @@ import {
   SignupPage,
   LoginPage,
   FaviouratePage,
+  CartPage,
 } from "./pages";
 
 function App() {
@@ -57,6 +58,24 @@ function App() {
     setProducts(faviourteProducts);
   };
 
+  //call back function to add product to cart
+
+  const addToCart = (id) => {
+    console.log("this is the id", id);
+    const productToCart = products.map((product) => {
+      if (product.id === id) {
+        if (product.cartQuestion === true) {
+          return { ...product, cartQuestion: false };
+        } else {
+          return { ...product, cartQuestion: true };
+        }
+      } else {
+        return product;
+      }
+    });
+    setProducts(productToCart);
+  };
+
   return (
     <div>
       <NavBar />
@@ -66,7 +85,11 @@ function App() {
         <Route
           path="/shop"
           element={
-            <ShopPage addToFaviourte={addToFaviourte} products={products} />
+            <ShopPage
+              addToFaviourte={addToFaviourte}
+              addToCart={addToCart}
+              products={products}
+            />
           }
         />
         <Route path="/details/:id" element={<DetailsPage />} />
@@ -76,6 +99,7 @@ function App() {
           path="/favorites"
           element={<FaviouratePage favProducts={products} />}
         />
+        <Route path="/cart" element={<CartPage addItem={products} />} />
       </Routes>
 
       <Footer />

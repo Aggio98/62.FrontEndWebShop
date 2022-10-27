@@ -26,7 +26,9 @@ const NavBar = () => {
         <NavLink to="/login">
           <BsPerson />
         </NavLink>
-        <BsCart />
+        <NavLink to="/cart">
+          <BsCart />
+        </NavLink>
         <NavLink to="/favorites">
           <BsHeart />
         </NavLink>

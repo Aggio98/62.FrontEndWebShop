@@ -10,6 +10,8 @@ function Productcard({
   img,
   favourite,
   addToFaviourte,
+  cartQuestion,
+  addToCart,
 }) {
   return (
     <div className="card">
@@ -29,6 +31,14 @@ function Productcard({
         }}
       >
         {favourite ? "my favourite" : "add to favourite"}
+      </button>
+      <button
+        onClick={() => {
+          addToCart(id);
+          console.log(addToCart);
+        }}
+      >
+        {cartQuestion ? "In The Cart" : "Add to Cart"}
       </button>
     </div>
   );

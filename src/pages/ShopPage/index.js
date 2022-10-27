@@ -6,7 +6,7 @@ import { FaviouratePage } from "../FavoritePage";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-const ShopPage = ({ addToFaviourte, products }) => {
+const ShopPage = ({ addToFaviourte, products, addToCart }) => {
   //get product data to display in product list
   // const [products, setProducts] = useState([]);
 
@@ -37,24 +37,25 @@ const ShopPage = ({ addToFaviourte, products }) => {
   //define filter options
   // const[filterByCat, setfilterByCat]=useState("")
 
-  const [categoryId, setCategoryId] = useState("");
+  // const [categoryId, setCategoryId] = useState("");
 
-  const filteredProductByCat = products.filter((product) => {
-    if (categoryId === "") {
-      return true;
-    } else if (parseInt(product.categoryId) === parseInt(categoryId)) {
-      return true;
-    } else {
-      return false;
-    }
-  });
+  // const filteredProductByCat = products.filter((product) => {
+  //   if (categoryId === "") {
+  //     return true;
+  //   } else if (parseInt(product.categoryId) === parseInt(categoryId)) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // });
 
-  const changeCatFilter = (event) => {
-    setCategoryId(event.target.value);
-  };
+  // const changeCatFilter = (event) => {
+  //   setCategoryId(event.target.value);
+  // };
 
   //return checked and value to setfilterarray
   const [filterCategory, setFilterCategory] = useState([]);
+  const [ratings, setRating] = useState([]);
 
   const generateFilterCategory = (event) => {
     if (event.target.checked === true) {
@@ -78,6 +79,13 @@ const ShopPage = ({ addToFaviourte, products }) => {
       return false;
     }
   });
+
+  // setFilterRating(products.rating);
+  // console.log("this is filterrating", filterRating);
+
+  // const changeRatFilter = (event) => {
+  //   setFilterRating(event.target.value);
+  // };
 
   // add to faviourte lift up function
   // const addToFaviourte = (id) => {
@@ -133,7 +141,9 @@ const ShopPage = ({ addToFaviourte, products }) => {
                     img={product.mainImage}
                     description={product.description}
                     favourite={product.favourite}
+                    cartQuestion={product.cartQuestion}
                     addToFaviourte={addToFaviourte}
+                    addToCart={addToCart}
                   />
                   {/* <Link>
                     <Link to={`/products/${product.id}`}>

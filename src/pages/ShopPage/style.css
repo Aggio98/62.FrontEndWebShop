@@ -1,11 +1,7 @@
-.page {
-
-}
 .product-list {
   display: flex;
   flex-wrap: wrap;
 }
 .product-card {
   width: 500px;
-  
 }
