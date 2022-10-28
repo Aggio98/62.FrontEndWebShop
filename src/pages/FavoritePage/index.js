@@ -1,9 +1,10 @@
 import { Productcard } from "../../components";
+import { Rating } from "../../components";
 import "./style.css";
 
-const FaviouratePage = ({ favProducts }) => {
-  const realFavProducts = favProducts.filter((product) => {
-    if (product.favourite === true) {
+const FaviouratePage = ({ favProducts, products }) => {
+  const realFavProducts = products.filter((product) => {
+    if (favProducts.includes(product.id)) {
       return true;
     } else {
       return false;
@@ -11,22 +12,26 @@ const FaviouratePage = ({ favProducts }) => {
   });
 
   return (
-    <div>
+    <div className="fav-page">
       <h2>Favorites</h2>
-      {!realFavProducts
-        ? "No faviourate product choosen, go back to shop to choose your faviourate"
-        : realFavProducts.map((product) => {
-            return (
-              <Productcard
-                id={product.id}
-                key={product.id}
-                title={product.title}
-                price={product.price}
-                img={product.mainImage}
-                description={product.description}
-              />
-            );
-          })}
+      <div className="fav-product-list">
+        {!realFavProducts
+          ? "No faviourate product choosen, go back to shop to choose your faviourate"
+          : realFavProducts.map((product) => {
+              return (
+                <Productcard
+                  id={product.id}
+                  key={product.id}
+                  title={product.title}
+                  price={product.price}
+                  rating={product.rating}
+                  img={product.mainImage}
+                  favProducts={favProducts}
+                  description={product.description}
+                />
+              );
+            })}
+      </div>
     </div>
   );
 };

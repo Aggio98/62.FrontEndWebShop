@@ -41,21 +41,39 @@ function App() {
 
   // call back function to add faviroute to the data
 
+  //Another way to add faviourate products
+
+  const [favProducts, setfavProducts] = useState([]);
+
   const addToFaviourte = (id) => {
-    console.log("this is id", id);
-    const faviourteProducts = products.map((product) => {
-      if (product.id === id) {
-        if (product.favourite === true) {
-          return { ...product, favourite: false };
-        } else {
-          return { ...product, favourite: true };
+    if (!favProducts.includes(id)) {
+      setfavProducts([...favProducts, id]);
+      // console.log("if not inlcuded", favProducts);
+    } else {
+      const newFavProductArray = favProducts.filter((item) => {
+        if (item !== id) {
+          return true;
         }
-      } else {
-        return product;
-      }
-    });
-    setProducts(faviourteProducts);
+      });
+      setfavProducts(newFavProductArray);
+    }
   };
+
+  // const addToFaviourte = (id) => {
+  //   console.log("this is id", id);
+  //   const faviourteProducts = products.map((product) => {
+  //     if (product.id === id) {
+  //       if (product.favourite === true) {
+  //         return { ...product, favourite: false };
+  //       } else {
+  //         return { ...product, favourite: true };
+  //       }
+  //     } else {
+  //       return product;
+  //     }
+  //   });
+  //   setProducts(faviourteProducts);
+  // };
 
   return (
     <div>
@@ -66,7 +84,11 @@ function App() {
         <Route
           path="/shop"
           element={
-            <ShopPage addToFaviourte={addToFaviourte} products={products} />
+            <ShopPage
+              addToFaviourte={addToFaviourte}
+              products={products}
+              favProducts={favProducts}
+            />
           }
         />
         <Route path="/details/:id" element={<DetailsPage />} />
@@ -74,7 +96,9 @@ function App() {
         <Route path="/login" element={<LoginPage sendToken={sendToken} />} />
         <Route
           path="/favorites"
-          element={<FaviouratePage favProducts={products} />}
+          element={
+            <FaviouratePage favProducts={favProducts} products={products} />
+          }
         />
       </Routes>
 

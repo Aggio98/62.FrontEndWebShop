@@ -1,11 +1,11 @@
 import React from "react";
-import { LoginForm } from "../../components/Login";
+import { ReviewForm } from "../../components/ReviewForm";
 import "./style.css";
 
-function LoginPage({ sendToken }) {
+function ReviewPage() {
   return (
-    <div className="login-form">
-      <LoginForm sendToken={sendToken} />
+    <div className="SignupForm">
+      <ReviewForm />
       {/* <p>
         email address: <input type="text" placeholder="Name" />{" "}
         <button>Add</button>
@@ -19,4 +19,4 @@ function LoginPage({ sendToken }) {
   );
 }
 
-export { LoginPage };
+export { ReviewPage };

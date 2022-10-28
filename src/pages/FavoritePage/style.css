@@ -1,0 +1,20 @@
+.fav-page{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding-top: 24px;
+    padding-left: 80px;
+    gap:40px;
+  
+  }
+
+
+
+.fav-product-list{
+    width:75%;
+    display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+}
+

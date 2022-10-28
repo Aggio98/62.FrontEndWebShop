@@ -1,0 +1,7 @@
+.fa-star {
+    color: #9295AA;
+}
+
+.fa-star.checked {
+    color: #FFC416;
+}

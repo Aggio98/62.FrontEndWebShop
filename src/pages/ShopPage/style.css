@@ -1,11 +1,31 @@
-.page {
+.shop-page{
+  display: flex;
+  padding-top: 64px;
+  padding-left: 80px;
+  gap:40px;
 
 }
+
 .product-list {
+  width: 75%;
   display: flex;
   flex-wrap: wrap;
 }
 .product-card {
-  width: 500px;
-  
+  width: 100%;
+}
+
+.shop-page-filter{
+  font-family: 'Lato';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 30px;
+/* identical to box height, or 188% */
+
+text-align: left;
+
+color: #7E81A2;
+
+
 }
