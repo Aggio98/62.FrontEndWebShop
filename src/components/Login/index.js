@@ -64,7 +64,7 @@ function LoginForm({ sendToken }) {
         />{" "}
       </p> */}
 
-      <form onSubmit={handleSubmit}>
+      <form className="login-form" onSubmit={handleSubmit}>
         <label>
           email:
           <input type="text" value={email} onChange={inputEmailEvent} />

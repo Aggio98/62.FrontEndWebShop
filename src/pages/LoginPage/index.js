@@ -4,7 +4,7 @@ import "./style.css";
 
 function LoginPage({ sendToken }) {
   return (
-    <div className="SignupForm">
+    <div className="login-form">
       <LoginForm sendToken={sendToken} />
       {/* <p>
         email address: <input type="text" placeholder="Name" />{" "}
