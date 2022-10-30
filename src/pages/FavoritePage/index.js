@@ -2,7 +2,7 @@ import { Productcard } from "../../components";
 import { Rating } from "../../components";
 import "./style.css";
 
-const FaviouratePage = ({ favProducts, products }) => {
+const FaviouratePage = ({ addToFaviourte, favProducts, products }) => {
   const realFavProducts = products.filter((product) => {
     if (favProducts.includes(product.id)) {
       return true;
@@ -26,8 +26,9 @@ const FaviouratePage = ({ favProducts, products }) => {
                   price={product.price}
                   rating={product.rating}
                   img={product.mainImage}
-                  favProducts={favProducts}
                   description={product.description}
+                  favProducts={favProducts}
+                  addToFaviourte={addToFaviourte}
                 />
               );
             })}

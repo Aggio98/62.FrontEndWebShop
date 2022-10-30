@@ -4,8 +4,8 @@ import "./style.css";
 
 function LoginPage({ sendToken }) {
   return (
-    <div className="login-form">
-      <LoginForm sendToken={sendToken} />
+    <div className="login-page">
+      <LoginForm sendToken={sendToken} className="login-form" />
       {/* <p>
         email address: <input type="text" placeholder="Name" />{" "}
         <button>Add</button>
