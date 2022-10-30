@@ -1,3 +1,9 @@
+.login-page{
+    display: flex;
+    align-items: center;
+    
+}
+
 .login-form{
     display:flex;
     flex-direction: row;
