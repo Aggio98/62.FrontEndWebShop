@@ -45,25 +45,6 @@ function LoginForm({ sendToken }) {
 
   return (
     <div className="SignupForm">
-      {/* <p>
-        User Name:{" "}
-        <input
-          type="text"
-          onChange={inputEmailEvent}
-          placeholder="Name"
-          value={email}
-        />{" "}
-      </p>
-      <p>
-        Password:{" "}
-        <input
-          type="text"
-          onChange={inputPasswordEvent}
-          placeholder="Name"
-          value={password}
-        />{" "}
-      </p> */}
-
       <form className="login-form" onSubmit={handleSubmit}>
         <label>
           email:

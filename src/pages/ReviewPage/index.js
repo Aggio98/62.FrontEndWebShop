@@ -4,7 +4,7 @@ import "./style.css";
 
 function ReviewPage() {
   return (
-    <div className="SignupForm">
+    <div className="ReviewPage">
       <ReviewForm />
       {/* <p>
         email address: <input type="text" placeholder="Name" />{" "}
